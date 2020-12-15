@@ -17,7 +17,7 @@ public class NPCController : MonoBehaviour
 
     private void Awake()
     {
-        // anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 
         if(agent != null)
@@ -50,5 +50,11 @@ public class NPCController : MonoBehaviour
             agent.destination = player.position;
             agent.speed = agentSpeed;
         }
+    }
+
+    
+    void Update()
+    {
+        anim.SetFloat("Speed", agent.velocity.magnitude);
     }
 }
